@@ -64,7 +64,7 @@ export const projects = [
     tags: ["Experiments", "Copy", "Checkout"],
     image: images.covers[1],
     impact: [
-      { label: "Time to Impact", value: "&lt;6 weeks" },
+      { label: "Time to Impact", value: "<6 weeks" },
       { label: "Key Wins", value: "5+" },
     ],
     link:
