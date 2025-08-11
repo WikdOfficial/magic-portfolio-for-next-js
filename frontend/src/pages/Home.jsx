@@ -152,7 +152,7 @@ export default function Home() {
       <section className="mt-20">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 className="text-xl md:text-2xl tracking-tight">Motion &amp; Systems Thinking</h3>
+            <h3 className="text-xl md:text-2xl tracking-tight">Motion & Systems Thinking</h3>
             <p className="text-muted-foreground mt-2 max-w-prose">
               A taste of how I visualize product systems, data flows, and user journeys. I borrow from motion design to make complex things feel simple.
             </p>
@@ -170,7 +170,7 @@ export default function Home() {
               <iframe
                 className="w-full h-full"
                 src={profile.videoUrl}
-                title="AI Product &amp; PM"
+                title="AI Product & PM"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -236,7 +236,7 @@ export default function Home() {
       {/* Downloads / Case Studies */}
       <section id="downloads" className="mt-20">
         <div className="flex items-end justify-between">
-          <h3 className="text-xl md:text-2xl tracking-tight">Case Studies &amp; Decks</h3>
+          <h3 className="text-xl md:text-2xl tracking-tight">Case Studies & Decks</h3>
           <a href="#top" className="text-sm opacity-80 hover:opacity-100">Back to top</a>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
