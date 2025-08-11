@@ -29,7 +29,7 @@ function RotatingRing() {
 
 function useTilt() {
   const [style, setStyle] = useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)" });
-  const onMouseMove = (e) =&gt; {
+  const onMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -37,7 +37,7 @@ function useTilt() {
     const ry = (x / rect.width - 0.5) * 6;
     setStyle({ transform: `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)` });
   };
-  const onMouseLeave = () =&gt; setStyle({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)" });
+  const onMouseLeave = () => setStyle({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)" });
   return { style, onMouseMove, onMouseLeave };
 }
 
@@ -59,12 +59,12 @@ function ProjectCard({ item }) {
         <CardContent className="pt-0 pb-4"&gt;
           <p className="text-sm text-muted-foreground"&gt;{item.subtitle}</p&gt;
           <div className="flex flex-wrap gap-2 mt-3"&gt;
-            {item.tags.map((t) =&gt; (
+            {item.tags.map((t) => (
               <Badge key={t} variant="secondary"&gt;{t}</Badge&gt;
             ))}
           </div&gt;
           <div className="flex gap-4 mt-4 text-xs text-muted-foreground"&gt;
-            {item.impact.map((m) =&gt; (
+            {item.impact.map((m) => (
               <div key={m.label} className="flex items-center gap-1"&gt;
                 <span className="font-medium text-foreground"&gt;{m.value}</span&gt; {m.label}
               </div&gt;
@@ -78,10 +78,10 @@ function ProjectCard({ item }) {
 
 export default function Home() {
   const { toast } = useToast();
-  const categories = useMemo(() =&gt; ["All", "Health AI", "CRO", "Onboarding", "Profile"], []);
+  const categories = useMemo(() => ["All", "Health AI", "CRO", "Onboarding", "Profile"], []);
   const [tab, setTab] = useState("All");
   const filtered = useMemo(
-    () =&gt; (tab === "All" ? projects : projects.filter((p) =&gt; p.category === tab)),
+    () => (tab === "All" ? projects : projects.filter((p) => p.category === tab)),
     [tab]
   );
 
@@ -97,7 +97,7 @@ export default function Home() {
               to execution, with experiments, AI-assisted workflows, and elegant UX.
             </p&gt;
             <div className="flex flex-wrap gap-2 mt-5"&gt;
-              {profile.vibeBadges.map((b) =&gt; (
+              {profile.vibeBadges.map((b) => (
                 <Badge key={b} variant="secondary"&gt;{b}</Badge&gt;
               ))}
             </div&gt;
@@ -107,7 +107,7 @@ export default function Home() {
               </a&gt;
               <Button
                 variant="secondary"
-                onClick={() =&gt; {
+                onClick={() => {
                   navigator.clipboard.writeText(profile.email);
                   toast({ title: "Email copied", description: profile.email });
                 }}
@@ -132,14 +132,14 @@ export default function Home() {
         </div&gt;
         <Tabs value={tab} onValueChange={setTab} className="mt-4"&gt;
           <TabsList&gt;
-            {categories.map((c) =&gt; (
+            {categories.map((c) => (
               <TabsTrigger key={c} value={c}&gt;{c}</TabsTrigger&gt;
             ))}
           </TabsList&gt;
-          {categories.map((c) =&gt; (
+          {categories.map((c) => (
             <TabsContent key={c} value={c} className="mt-6"&gt;
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;
-                {filtered.map((p) =&gt; (
+                {filtered.map((p) => (
                   <ProjectCard key={p.id} item={p} /&gt;
                 ))}
               </div&gt;
@@ -184,7 +184,7 @@ export default function Home() {
       <section id="writing" className="mt-20"&gt;
         <h3 className="text-xl md:text-2xl tracking-tight"&gt;Writing</h3&gt;
         <div className="grid md:grid-cols-2 gap-6 mt-6"&gt;
-          {articles.map((a) =&gt; (
+          {articles.map((a) => (
             <a key={a.title} href={a.url} target="_blank" rel="noreferrer" className="block"&gt;
               <Card className="hover:-translate-y-0.5 transition-transform"&gt;
                 <CardHeader&gt;
@@ -214,7 +214,7 @@ export default function Home() {
           <div&gt;
             <h4 className="font-medium tracking-tight"&gt;Career in Short</h4&gt;
             <div className="mt-3 grid gap-3"&gt;
-              {timeline.map((t) =&gt; (
+              {timeline.map((t) => (
                 <div key={t.year} className="border rounded-md p-3"&gt;
                   <div className="flex items-center justify-between"&gt;
                     <span className="text-sm text-muted-foreground"&gt;{t.year}</span&gt;
@@ -222,7 +222,7 @@ export default function Home() {
                   </div&gt;
                   <div className="mt-1 text-sm font-medium"&gt;{t.role}</div&gt;
                   <div className="mt-2 flex flex-wrap gap-2"&gt;
-                    {t.highlights.map((h) =&gt; (
+                    {t.highlights.map((h) => (
                       <Badge key={h} variant="secondary"&gt;{h}</Badge&gt;
                     ))}
                   </div&gt;
@@ -240,7 +240,7 @@ export default function Home() {
           <a href="#top" className="text-sm opacity-80 hover:opacity-100"&gt;Back to top</a&gt;
         </div&gt;
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"&gt;
-          {downloads.map((d) =&gt; (
+          {downloads.map((d) => (
             <a key={d.label} href={d.href} target="_blank" rel="noreferrer" className="block"&gt;
               <Card className="hover:border-foreground/40 transition-colors"&gt;
                 <CardContent className="p-5 flex items-center justify-between"&gt;
