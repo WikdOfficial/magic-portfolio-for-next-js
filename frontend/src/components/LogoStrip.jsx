@@ -1,10 +1,13 @@
 import React from "react";
 import { Card } from "../components/ui/card";
 
-export default function LogoStrip({ title, items = [] }) {
+export default function LogoStrip({ title, items = [], motion }) {
   return (
     <section className="mt-14">
-      <h4 className="text-sm uppercase tracking-wider text-muted-foreground">{title}</h4>
+      <div className="flex items-center gap-4">
+        <h4 className="text-sm uppercase tracking-wider text-muted-foreground">{title}</h4>
+        {motion ? <div className="shrink-0">{motion}</div> : null}
+      </div>
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {items.map((it) => (
           <Card

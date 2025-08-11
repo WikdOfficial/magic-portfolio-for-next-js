@@ -9,6 +9,8 @@ import { useToast } from "../hooks/use-toast";
 import { ArrowUpRight, Download, ExternalLink } from "lucide-react";
 import HeroScene from "../components/HeroScene";
 import LogoStrip from "../components/LogoStrip";
+import HeroTitle from "../components/HeroTitle";
+import WorkedWithMotion from "../components/WorkedWithMotion";
 
 function useTilt() {
   const [style, setStyle] = useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)" });
@@ -86,9 +88,7 @@ export default function Home() {
         <HeroScene />
         <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
           <div>
-            <h1 className="font-display text-5xl md:text-7xl tracking-tight leading-[1.03]">
-              {profile.headline}
-            </h1>
+            <HeroTitle text={profile.headline} className="font-display text-5xl md:text-7xl tracking-tight leading-[1.03]" />
             <p className="mt-4 text-muted-foreground max-w-[60ch]">
               {profile.subheadline}
             </p>
@@ -134,8 +134,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Employers and Tools */}
-      <LogoStrip title="Worked with" items={employers} />
+      {/* Employers and Tools with motion icon */}
+      <LogoStrip title="Worked with" items={employers} motion={<WorkedWithMotion />} />
       <LogoStrip title="Tools & Platforms" items={tools} />
 
       {/* What I Build */}
