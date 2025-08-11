@@ -12,15 +12,15 @@ function BackgroundKnot() {
   });
   return (
     <mesh ref={ref} position={[0, 0, -1]}>
-      <torusKnotGeometry args={[1.3, 0.42, 220, 36]} />
-      <meshStandardMaterial color="#0a0a0a" metalness={0.75} roughness={0.2} />
+      <torusKnotGeometry args={[1.6, 0.46, 240, 40]} />
+      <meshStandardMaterial color="#0a0a0a" metalness={0.8} roughness={0.2} />
     </mesh>
   );
 }
 
 function R3FBackdrop() {
   return (
-    <Canvas camera={{ position: [0, 0, 3.4], fov: 45 }} dpr={[1, 1.5]}>
+    <Canvas camera={{ position: [0, 0, 3.6], fov: 45 }} dpr={[1, 1.5]}>
       <ambientLight intensity={0.6} />
       <directionalLight position={[2, 1, 2]} intensity={0.9} />
       <BackgroundKnot />
@@ -38,16 +38,30 @@ export default function WorkedWithShowcase({ items = [] }) {
     return () => clearInterval(t);
   }, [cycle.length]);
 
+  const spotlight = cycle[active] || {};
+
   return (
     <section className="relative my-16 rounded-2xl overflow-hidden border border-white/40">
       {/* 3D background */}
-      <div className="absolute inset-0 -z-10 hidden md:block">
+      <div className="absolute inset-0 -z-20 hidden md:block">
         <R3FBackdrop />
       </div>
-      {/* gradient blend */}
+      {/* blend + glass veil */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(1200px_600px_at_20%_10%,rgba(255,255,255,0.85),rgba(255,255,255,0.6)_50%,transparent_80%)]" />
+      <div className="absolute inset-0 -z-10 bg-white/20 backdrop-blur-xl" />
 
-      <div className="px-6 sm:px-10 py-10 md:py-16">
+      {/* Spotlight logo */}
+      <div className="pointer-events-none absolute inset-0 grid place-items-center">
+        <div className="glass rounded-2xl px-6 py-4 shadow-lg transition-opacity duration-600">
+          {spotlight?.logo ? (
+            <img key={spotlight.logo + active} src={spotlight.logo} alt={spotlight.label} className="h-8 w-auto object-contain" />
+          ) : (
+            <div className="text-sm font-medium opacity-90" key={spotlight.label + active}>{spotlight.label}</div>
+          )}
+        </div>
+      </div>
+
+      <div className="relative px-6 sm:px-10 py-12 md:py-16">
         <div className="flex items-center gap-4">
           <h4 className="text-sm uppercase tracking-wider text-muted-foreground">Worked with</h4>
           <div className="h-3 w-3 rounded-full bg-foreground/80 animate-ping" />
@@ -55,7 +69,7 @@ export default function WorkedWithShowcase({ items = [] }) {
 
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           {items.map((it, i) => (
-            <div key={it.label} className={`glass h-16 px-3 py-2 flex items-center justify-center transition-all ${i === active ? "scale-[1.03] ring-1 ring-foreground/20" : "opacity-80"}`} title={it.label}>
+            <div key={it.label} className={`glass h-16 px-3 py-2 flex items-center justify-center transition-all ${i === active ? "scale-[1.04] ring-1 ring-foreground/20" : "opacity-85"}`} title={it.label}>
               {it.logo ? (
                 <img src={it.logo} alt={it.label} className="max-h-8 object-contain" loading="lazy" />
               ) : (
