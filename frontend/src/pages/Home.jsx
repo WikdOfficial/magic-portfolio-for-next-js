@@ -263,7 +263,7 @@ export default function Home() {
             <p className="text-muted-foreground mt-2">Zero theater. Real outcomes. AI-first, patient-centered, operator-approved.</p>
           </div>
           <div className="flex md:justify-end gap-3">
-            <a href="mailto:"+{profile.email}>
+            <a href={`mailto:${profile.email}`}>
               <Button>Email Me</Button>
             </a>
             <a href={profile.links.linkedin} target="_blank" rel="noreferrer">
