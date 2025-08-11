@@ -92,7 +92,7 @@ export const projects = [
     tags: ["Strategy", "Execution", "Leadership"],
     image: images.covers[2],
     impact: [
-      { label: "0→1 &amp; 1→N", value: "Hands-on" },
+      { label: "0→1 & 1→N", value: "Hands-on" },
       { label: "AI-first", value: "Health + Ops" },
     ],
     link:
