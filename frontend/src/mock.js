@@ -116,7 +116,7 @@ export const timeline = [
   {
     year: "2020–2022",
     role: "PM",
-    org: "Practo &amp; DocsApp",
+    org: "Practo & DocsApp",
     highlights: ["Onboarding", "Retention via rewards"],
   },
 ];
