@@ -12,7 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
-        &lt;/Layout&gt;
+        </Layout>
       &lt;/BrowserRouter&gt;
     &lt;/div&gt;
   );
