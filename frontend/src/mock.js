@@ -86,7 +86,7 @@ export const projects = [
   },
   {
     id: "roles-scope",
-    title: "Product Roles &amp; Scope",
+    title: "Product Roles & Scope",
     subtitle: "Where I create the most value",
     category: "Profile",
     tags: ["Strategy", "Execution", "Leadership"],
