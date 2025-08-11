@@ -30,7 +30,7 @@ export const images = {
 export const projects = [
   {
     id: "oz-health-ai",
-    title: "DocsApp – Earn &amp; Burn Rewards",
+    title: "DocsApp – Earn & Burn Rewards",
     subtitle: "Driving retention with gamified health incentives",
     category: "Health AI",
     tags: ["Engagement", "Rewards", "Retention"],
