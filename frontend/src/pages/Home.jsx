@@ -8,9 +8,8 @@ import { Separator } from "../components/ui/separator";
 import { useToast } from "../hooks/use-toast";
 import { ArrowUpRight, Download, ExternalLink } from "lucide-react";
 import HeroScene from "../components/HeroScene";
-import LogoStrip from "../components/LogoStrip";
 import HeroTitle from "../components/HeroTitle";
-import WorkedWithMotion from "../components/WorkedWithMotion";
+import WorkedWithShowcase from "../components/WorkedWithShowcase";
 
 function useTilt() {
   const [style, setStyle] = useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)" });
@@ -89,81 +88,51 @@ export default function Home() {
         <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
           <div>
             <HeroTitle text={profile.headline} className="font-display text-5xl md:text-7xl tracking-tight leading-[1.03]" />
-            <p className="mt-4 text-muted-foreground max-w-[60ch]">
-              {profile.subheadline}
-            </p>
+            <p className="mt-4 text-muted-foreground max-w-[60ch]">{profile.subheadline}</p>
             <div className="flex flex-wrap gap-2 mt-5">
-              {profile.vibeBadges.map((b) => (
-                <Badge key={b} variant="secondary">{b}</Badge>
-              ))}
+              {profile.vibeBadges.map((b) => (<Badge key={b} variant="secondary">{b}</Badge>))}
             </div>
             <div className="mt-6 flex gap-3">
-              <a href="#work">
-                <Button>View Work</Button>
-              </a>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  navigator.clipboard.writeText(profile.email);
-                  toast({ title: "Email copied", description: profile.email });
-                }}
-              >
-                Copy Email
-              </Button>
+              <a href="#work"><Button>View Work</Button></a>
+              <Button variant="secondary" onClick={() => { navigator.clipboard.writeText(profile.email); toast({ title: "Email copied", description: profile.email }); }}>Copy Email</Button>
             </div>
           </div>
           <div className="relative">
-            {/* Portrait */}
-            <div ref={portraitRef} className="rounded-xl overflow-hidden border bg-white/40 backdrop-blur-md border-white/60 shadow-sm">
+            <div ref={portraitRef} className="glass rounded-xl overflow-hidden shadow-sm">
               <img src={profile.headshot} alt="Saksham Kalra" className="w-full h-[260px] object-cover" />
             </div>
-            {/* Feature reel */}
-            <div className="mt-4 rounded-xl overflow-hidden border bg-white/40 backdrop-blur-md border-white/60 shadow-sm">
+            <div className="mt-4 glass rounded-xl overflow-hidden shadow-sm">
               <div className="aspect-video">
-                <iframe
-                  className="w-full h-full"
-                  src={profile.videoUrl}
-                  title="AI PM feature reel"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <video src={profile.videoMp4} muted loop autoPlay playsInline className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Employers and Tools with motion icon */}
-      <LogoStrip title="Worked with" items={employers} motion={<WorkedWithMotion />} />
-      <LogoStrip title="Tools & Platforms" items={tools} />
+      {/* Worked with — 3D blended section with cycling logos */}
+      <WorkedWithShowcase items={employers} />
+
+      {/* Tools */}
+      <section className="mt-10">
+        <h4 className="text-sm uppercase tracking-wider text-muted-foreground">Tools & Platforms</h4>
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+          {tools.map((it) => (
+            <div key={it.label} className="glass h-12 px-3 py-2 flex items-center justify-center"><span className="text-sm opacity-90">{it.label}</span></div>
+          ))}
+        </div>
+      </section>
 
       {/* What I Build */}
       <section className="mt-14">
         <div className="grid md:grid-cols-2 gap-6">
-          <Card className="bg-white/45 border-white/60 backdrop-blur-md">
-            <CardHeader>
-              <CardTitle className="tracking-tight">B2B SaaS</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground -mt-3">
-              <ul className="list-disc pl-5 space-y-2">
-                {showcase.b2b.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            </CardContent>
+          <Card className="glass">
+            <CardHeader><CardTitle className="tracking-tight">B2B SaaS</CardTitle></CardHeader>
+            <CardContent className="text-sm text-muted-foreground -mt-3"><ul className="list-disc pl-5 space-y-2">{showcase.b2b.map((s) => (<li key={s}>{s}</li>))}</ul></CardContent>
           </Card>
-          <Card className="bg-white/45 border-white/60 backdrop-blur-md">
-            <CardHeader>
-              <CardTitle className="tracking-tight">B2C Health Apps</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground -mt-3">
-              <ul className="list-disc pl-5 space-y-2">
-                {showcase.b2c.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            </CardContent>
+          <Card className="glass">
+            <CardHeader><CardTitle className="tracking-tight">B2C Health Apps</CardTitle></CardHeader>
+            <CardContent className="text-sm text-muted-foreground -mt-3"><ul className="list-disc pl-5 space-y-2">{showcase.b2c.map((s) => (<li key={s}>{s}</li>))}</ul></CardContent>
           </Card>
         </div>
       </section>
@@ -172,23 +141,13 @@ export default function Home() {
       <section id="work" className="mt-20">
         <div className="flex items-end justify-between">
           <h2 className="font-display text-3xl md:text-4xl tracking-tight">Selected Work</h2>
-          <a className="text-sm inline-flex items-center gap-1 opacity-80 hover:opacity-100" href="#downloads">
-            Full case studies <ExternalLink size={16} />
-          </a>
+          <a className="text-sm inline-flex items-center gap-1 opacity-80 hover:opacity-100" href="#downloads">Full case studies <ExternalLink size={16} /></a>
         </div>
         <Tabs value={tab} onValueChange={setTab} className="mt-4">
-          <TabsList>
-            {categories.map((c) => (
-              <TabsTrigger key={c} value={c}>{c}</TabsTrigger>
-            ))}
-          </TabsList>
-          {categories.map((c) => (
+          <TabsList>{["All", "Health AI", "CRO", "Onboarding", "Profile"].map((c) => (<TabsTrigger key={c} value={c}>{c}</TabsTrigger>))}</TabsList>
+          {["All", "Health AI", "CRO", "Onboarding", "Profile"].map((c) => (
             <TabsContent key={c} value={c} className="mt-6">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filtered.map((p) => (
-                  <ProjectCard key={p.id} item={p} />
-                ))}
-              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{filtered.map((p) => (<ProjectCard key={p.id} item={p} />))}</div>
             </TabsContent>
           ))}
         </Tabs>
@@ -197,89 +156,34 @@ export default function Home() {
       {/* Writing */}
       <section id="writing" className="mt-20">
         <h3 className="font-display text-2xl md:text-3xl tracking-tight">Writing</h3>
-        <div className="grid md:grid-cols-2 gap-6 mt-6">
-          {articles.map((a) => (
-            <a key={a.title} href={a.url} target="_blank" rel="noreferrer" className="block">
-              <Card className="hover:-translate-y-0.5 transition-transform">
-                <CardHeader>
-                  <CardTitle className="text-base tracking-tight">{a.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground -mt-4 pb-4">
-                  {a.date}
-                </CardContent>
-              </Card>
-            </a>
-          ))}
-        </div>
+        <div className="grid md:grid-cols-2 gap-6 mt-6">{articles.map((a) => (<a key={a.title} href={a.url} target="_blank" rel="noreferrer" className="block"><Card className="hover:-translate-y-0.5 transition-transform"><CardHeader><CardTitle className="text-base tracking-tight">{a.title}</CardTitle></CardHeader><CardContent className="text-sm text-muted-foreground -mt-4 pb-4">{a.date}</CardContent></Card></a>))}</div>
       </section>
 
       {/* About / Career */}
       <section id="about" className="mt-20">
         <h3 className="font-display text-2xl md:text-3xl tracking-tight">Career in Short</h3>
         <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 mt-6">
-          <div className="max-w-prose text-muted-foreground">
-            <p>
-              I turn ambiguity into velocity. AI-first in health — shipping responsibly with patient empathy and operational scale. Arsenal on weekends, Hindi rap on repeat, family at the core.
-            </p>
-          </div>
-          <div>
-            <div className="mt-1 grid gap-3">
-              {timeline.map((t) => (
-                <div key={t.year} className="border rounded-md p-3 bg-white/50 backdrop-blur">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">{t.year}</span>
-                    <span className="text-sm">{t.org}</span>
-                  </div>
-                  <div className="mt-1 text-sm font-medium">{t.role}</div>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {t.highlights.map((h) => (
-                      <Badge key={h} variant="secondary">{h}</Badge>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <div className="max-w-prose text-muted-foreground"><p>I turn ambiguity into velocity. AI-first in health — shipping responsibly with patient empathy and operational scale. Arsenal on weekends, Hindi rap on repeat, family at the core.</p></div>
+          <div><div className="mt-1 grid gap-3">{timeline.map((t) => (<div key={t.year} className="glass p-3"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{t.year}</span><span className="text-sm">{t.org}</span></div><div className="mt-1 text-sm font-medium">{t.role}</div><div className="mt-2 flex flex-wrap gap-2">{t.highlights.map((h) => (<Badge key={h} variant="secondary">{h}</Badge>))}</div></div>))}</div></div>
         </div>
       </section>
 
       {/* Downloads / Case Studies */}
       <section id="downloads" className="mt-20">
-        <div className="flex items-end justify-between">
-          <h3 className="font-display text-2xl md:text-3xl tracking-tight">Case Studies & Decks</h3>
-          <a href="#top" className="text-sm opacity-80 hover:opacity-100">Back to top</a>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          {downloads.map((d) => (
-            <a key={d.label} href={d.href} target="_blank" rel="noreferrer" className="block">
-              <Card className="hover:border-foreground/40 transition-colors">
-                <CardContent className="p-5 flex items-center justify-between">
-                  <span className="text-sm">{d.label}</span>
-                  <Download size={18} className="opacity-70" />
-                </CardContent>
-              </Card>
-            </a>
-          ))}
-        </div>
+        <div className="flex items-end justify-between"><h3 className="font-display text-2xl md:text-3xl tracking-tight">Case Studies & Decks</h3><a href="#top" className="text-sm opacity-80 hover:opacity-100">Back to top</a></div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">{downloads.map((d) => (<a key={d.label} href={d.href} target="_blank" rel="noreferrer" className="block"><Card className="hover:border-foreground/40 transition-colors"><CardContent className="p-5 flex items-center justify-between"><span className="text-sm">{d.label}</span><Download size={18} className="opacity-70" /></CardContent></Card></a>))}</div>
       </section>
 
       <Separator className="my-20" />
 
       {/* Final CTA */}
       <section className="mb-24">
-        <div className="rounded-xl border p-6 md:p-8 grid md:grid-cols-[1.2fr_0.8fr] gap-6 items-center bg-white/45 backdrop-blur-md border-white/60">
+        <div className="glass-deep p-6 md:p-8 grid md:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
           <div>
             <h3 className="font-display text-2xl md:text-3xl tracking-tight">Let’s ship the next breakthrough</h3>
             <p className="text-muted-foreground mt-2">Zero theater. Real outcomes. AI-first, patient-centered, operator-approved.</p>
           </div>
-          <div className="flex md:justify-end gap-3">
-            <a href={`mailto:${profile.email}`}>
-              <Button>Email Me</Button>
-            </a>
-            <a href={profile.links.linkedin} target="_blank" rel="noreferrer">
-              <Button variant="secondary">LinkedIn</Button>
-            </a>
-          </div>
+          <div className="flex md:justify-end gap-3"><a href={`mailto:${profile.email}`}><Button>Email Me</Button></a><a href={profile.links.linkedin} target="_blank" rel="noreferrer"><Button variant="secondary">LinkedIn</Button></a></div>
         </div>
       </section>
     </div>
