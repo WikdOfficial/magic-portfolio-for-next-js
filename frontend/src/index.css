@@ -34,31 +34,11 @@ code { font-family: "IBM Plex Mono", Menlo, Monaco, Consolas, "Courier New", mon
     --ring: 0 0% 3.9%;
     --radius: 0.5rem;
   }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-  }
+  .dark { --background: 0 0% 3.9%; --foreground: 0 0% 98%; --card: 0 0% 3.9%; --card-foreground: 0 0% 98%; --popover: 0 0% 3.9%; --popover-foreground: 0 0% 98%; --primary: 0 0% 98%; --primary-foreground: 0 0% 9%; --secondary: 0 0% 14.9%; --secondary-foreground: 0 0% 98%; --muted: 0 0% 14.9%; --muted-foreground: 0 0% 63.9%; --accent: 0 0% 14.9%; --accent-foreground: 0 0% 98%; --destructive: 0 62.8% 30.6%; --destructive-foreground: 0 0% 98%; --border: 0 0% 14.9%; --input: 0 0% 14.9%; --ring: 0 0% 83.1%; }
   h1,h2,h3,h4,.font-display { font-family: 'Space Grotesk', Inter, system-ui, sans-serif; }
 }
 
 @layer components {
-  .glass { @apply bg-white/50 border border-white/60 backdrop-blur-lg shadow-sm rounded-xl; }
-  .glass-deep { @apply bg-white/40 border border-white/70 backdrop-blur-xl shadow-md rounded-2xl; }
+  .glass { @apply bg-white/55 border border-white/70 backdrop-blur-2xl shadow-sm rounded-xl; }
+  .glass-deep { @apply bg-white/45 border border-white/70 backdrop-blur-2xl shadow-md rounded-2xl; }
 }

@@ -11,7 +11,7 @@ export const profile = {
     medium:
       "https://medium.com/@sakshamkalra/lean-automated-and-ai-driven-preparing-for-the-future-of-product-management-e47014d70801",
   },
-  videoMp4: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4", // placeholder loop; replace with your reel
+  videoMp4: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4",
   headshot:
     "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/ivp7wbnw_IMG_4723.jpg",
   personality:
@@ -36,26 +36,29 @@ export const projects = [
   { id: "roles-scope", title: "Product Roles & Scope", subtitle: "Where I create the most value", category: "Profile", tags: ["Strategy", "Execution", "Leadership"], image: images.covers[2], impact: [{ label: "0→1 & 1→N", value: "Hands-on" }, { label: "AI-first", value: "Health + Ops" }], link: "https://customer-assets.emergentagent.com/job_36d235e4-16cf-4dd4-befa-ddfd3ecca9f6/artifacts/62d6fp5q_SakshamProductBusinessroles.pdf" },
 ];
 
-// Logos (set logo to null for now; will swap to official monochrome SVGs after approval)
+// Employers with auto-sourced logos via Clearbit CDN (no key needed) and your provided Thrive logo
 export const employers = [
-  { label: "Practo", logo: null },
-  { label: "MediBuddy", logo: null },
-  { label: "Ketto", logo: null },
-  { label: "PharmEasy", logo: null },
-  { label: "Thrive Health India", logo: null },
+  { label: "Practo", logo: "https://logo.clearbit.com/practo.com" },
+  { label: "MediBuddy", logo: "https://logo.clearbit.com/medibuddy.com" },
+  { label: "Ketto", logo: "https://logo.clearbit.com/ketto.org" },
+  { label: "PharmEasy", logo: "https://logo.clearbit.com/pharmeasy.in" },
+  { label: "Thrive Health India", logo: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/qb5qfbwm_div.png" },
 ];
 
 export const tools = [
   { label: "Cursor" }, { label: "Vercel" }, { label: "OpenAI / ChatGPT" }, { label: "Google Gemini" }, { label: "Anthropic Claude" }, { label: "Runway" }, { label: "Linear" },
-  { label: "Zapier" }, { label: "Zoho" }, { label: "Freshdesk" }, { label: "CleverTap" }, { label: "Twilio" }, { label: "Shopify" }
+  { label: "Zapier" }, { label: "Zoho" }, { label: "Freshdesk" }, { label: "CleverTap" }, { label: "Twilio" }, { label: "Shopify" },
+  { label: "Razorpay" }, { label: "Paytm" }, { label: "Transcorp" }, { label: "AppsFlyer" }, { label: "Adobe Analytics" }, { label: "HasOffers" }, { label: "Retool" }
 ];
 
 export const timeline = [
-  { year: "2025—Now", role: "Founder / Product", org: "Thrive Health India", highlights: ["AI-assisted care ops", "0→1 build"] },
-  { year: "2023—2024", role: "Senior PM", org: "Ketto / Tura", highlights: ["Checkout CRO", "Experiment velocity"] },
-  { year: "2021—2023", role: "PM", org: "MediBuddy (DocsApp)", highlights: ["Rewards & retention", "Scaled engagement"] },
-  { year: "2019—2021", role: "PM", org: "Practo", highlights: ["Onboarding", "Activation"] },
-  { year: "2018—2019", role: "Product/Growth", org: "PharmEasy", highlights: ["Acquisition", "Market playbooks"] },
+  { year: "2025-01 — Now", role: "Founder & CEO", org: "Thrive Health India", highlights: ["AI doctor's assistant (RAG) answers 95% clinical queries", "Provider partnerships onboarded", "1000+ waitlist; beta soon"] },
+  { year: "2024-07 — 2024-12", role: "Consultant", org: "Fintech Stealth", highlights: ["PPI cashback app; infra + app store launch", "Led product strategy, design & dev"] },
+  { year: "2020-09 — 2024-07", role: "VP Product & Growth", org: "Ketto", highlights: ["+15% new revenue YoY; 200% donor LTV", "$5M ARR subs in 14 months", "+100% conversion via CRO", "$1M GMV PPI; OPD subs ₹1Cr ARR"] },
+  { year: "2019-09 — 2020-09", role: "Growth PM", org: "MediBuddy", highlights: ["$35k MRR via rewards; 700k regs/month", "+$2.2M lab orders; DocsApp→MediBuddy migration"] },
+  { year: "2019-02 — 2019-09", role: "Growth PM", org: "PharmEasy", highlights: ["25k→40k daily orders; $8.8M→$11.2M revenue", "+20% fulfillment; +$200k MRR via partners"] },
+  { year: "2018 — 2019", role: "Founder & CEO", org: "Insfyre", highlights: ["Bootstrapped to ₹15L revenue (solo + 5 interns)", "Creator P2P courses platform; sunset after market fit"] },
+  { year: "2014-09 — 2018-12", role: "SaaS PM", org: "Practo", highlights: ["+2000 B2B accounts; ARPU $180→$260 ($1M ARR)", "70k doctors migrated; -4% churn; -30% CAC; +8% conv", "OPD cashless network 8000 doctors (GTM)"] },
 ];
 
 export const showcase = {

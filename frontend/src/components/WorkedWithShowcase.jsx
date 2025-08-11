@@ -12,7 +12,7 @@ function BackgroundKnot() {
   });
   return (
     <mesh ref={ref} position={[0, 0, -1]}>
-      <torusKnotGeometry args={[1.6, 0.46, 240, 40]} />
+      <torusKnotGeometry args={[1.8, 0.5, 300, 48]} />
       <meshStandardMaterial color="#0a0a0a" metalness={0.8} roughness={0.2} />
     </mesh>
   );
@@ -34,7 +34,7 @@ export default function WorkedWithShowcase({ items = [] }) {
 
   useEffect(() => {
     if (cycle.length === 0) return;
-    const t = setInterval(() => setActive((v) => (v + 1) % cycle.length), 1800);
+    const t = setInterval(() => setActive((v) => (v + 1) % cycle.length), 1600);
     return () => clearInterval(t);
   }, [cycle.length]);
 
@@ -47,12 +47,12 @@ export default function WorkedWithShowcase({ items = [] }) {
         <R3FBackdrop />
       </div>
       {/* blend + glass veil */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(1200px_600px_at_20%_10%,rgba(255,255,255,0.85),rgba(255,255,255,0.6)_50%,transparent_80%)]" />
-      <div className="absolute inset-0 -z-10 bg-white/20 backdrop-blur-xl" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(1200px_600px_at_20%_10%,rgba(255,255,255,0.9),rgba(255,255,255,0.65)_50%,transparent_80%)]" />
+      <div className="absolute inset-0 -z-10 bg-white/20 backdrop-blur-2xl" />
 
       {/* Spotlight logo */}
       <div className="pointer-events-none absolute inset-0 grid place-items-center">
-        <div className="glass rounded-2xl px-6 py-4 shadow-lg transition-opacity duration-600">
+        <div className="glass rounded-2xl px-6 py-4 shadow-lg transition-all duration-500 will-change-transform animate-spotlight">
           {spotlight?.logo ? (
             <img key={spotlight.logo + active} src={spotlight.logo} alt={spotlight.label} className="h-8 w-auto object-contain" />
           ) : (
@@ -69,7 +69,7 @@ export default function WorkedWithShowcase({ items = [] }) {
 
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           {items.map((it, i) => (
-            <div key={it.label} className={`glass h-16 px-3 py-2 flex items-center justify-center transition-all ${i === active ? "scale-[1.04] ring-1 ring-foreground/20" : "opacity-85"}`} title={it.label}>
+            <div key={it.label} className={`glass h-16 px-3 py-2 flex items-center justify-center transition-all hover:scale-[1.05] ${i === active ? "scale-[1.04] ring-1 ring-foreground/20" : "opacity-85"}`} title={it.label}>
               {it.logo ? (
                 <img src={it.logo} alt={it.label} className="max-h-8 object-contain" loading="lazy" />
               ) : (
@@ -79,6 +79,11 @@ export default function WorkedWithShowcase({ items = [] }) {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes spotlightIn { from { transform: translateY(6px) scale(0.98); opacity: 0 } to { transform: translateY(0px) scale(1); opacity: 1 } }
+        .animate-spotlight { animation: spotlightIn 420ms ease-out; }
+      `}</style>
     </section>
   );
 }
