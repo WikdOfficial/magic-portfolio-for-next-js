@@ -36,13 +36,13 @@ export const projects = [
   { id: "roles-scope", title: "Product Roles & Scope", subtitle: "Where I create the most value", category: "Profile", tags: ["Strategy", "Execution", "Leadership"], image: images.covers[2], impact: [{ label: "0→1 & 1→N", value: "Hands-on" }, { label: "AI-first", value: "Health + Ops" }], link: "https://customer-assets.emergentagent.com/job_36d235e4-16cf-4dd4-befa-ddfd3ecca9f6/artifacts/62d6fp5q_SakshamProductBusinessroles.pdf" },
 ];
 
-// Employers with auto-sourced logos via Clearbit CDN (no key needed) and your provided Thrive logo
+// Employers with logos, roles, periods, and a fallback visual asset for the vortex
 export const employers = [
-  { label: "Practo", logo: "https://logo.clearbit.com/practo.com" },
-  { label: "MediBuddy", logo: "https://logo.clearbit.com/medibuddy.com" },
-  { label: "Ketto", logo: "https://logo.clearbit.com/ketto.org" },
-  { label: "PharmEasy", logo: "https://logo.clearbit.com/pharmeasy.in" },
-  { label: "Thrive Health India", logo: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/qb5qfbwm_div.png" },
+  { label: "Practo", logo: "https://logo.clearbit.com/practo.com", about: "SaaS PM — Ray intl launch, +2k accounts, $1M ARR", period: "2014–2018", fallback: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/3vzlbni4_image.png" },
+  { label: "MediBuddy", logo: "https://logo.clearbit.com/medibuddy.com", about: "Growth PM — $35k MRR via rewards, 700k regs/mo, +$2.2M lab", period: "2019–2020", fallback: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/3vzlbni4_image.png" },
+  { label: "Ketto", logo: "https://logo.clearbit.com/ketto.org", about: "VP Product & Growth — +15% revenue YoY, 200% LTV, $5M ARR", period: "2020–2024", fallback: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/3vzlbni4_image.png" },
+  { label: "PharmEasy", logo: "https://logo.clearbit.com/pharmeasy.in", about: "Growth PM — 25k→40k orders, +20% fulfillment, +$200k MRR", period: "2019", fallback: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/3vzlbni4_image.png" },
+  { label: "Thrive Health India", logo: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/qb5qfbwm_div.png", about: "Founder & CEO — AI doctor assistant, provider partners, 1k+ waitlist", period: "2025–Now", fallback: "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/3vzlbni4_image.png" },
 ];
 
 export const tools = [
