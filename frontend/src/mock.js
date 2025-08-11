@@ -1,37 +1,45 @@
 export const profile = {
   name: "Saksham Kalra",
-  role: "AI-first Product Manager",
-  headline: "AI-first Product Leader for Health Tech",
+  role: "Entrepreneur & Product Leader",
+  headline: "Entrepreneur & Product Leader with AI Expertise",
   subheadline:
-    "I build category-defining products that ship fast, convert better, and scale responsibly.",
-  vibeBadges: ["AI", "HealthTech", "Growth", "Ship Fast"],
+    "I build AI-first products across B2B SaaS and B2C health — clear strategy, rapid experiments, measurable growth.",
+  vibeBadges: ["AI-first", "HealthTech", "B2B SaaS", "0→1 & Scale"],
   email: "sakshamkalra@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/saksham-k-267aa2b7/",
     medium:
       "https://medium.com/@sakshamkalra/lean-automated-and-ai-driven-preparing-for-the-future-of-product-management-e47014d70801",
   },
-  videoUrl: "https://www.youtube.com/embed/Src5FJ6bZ5s", // placeholder: AI + PM talk (replace later)
+  // YouTube embed with loop
+  videoUrl:
+    "https://www.youtube.com/embed/Src5FJ6bZ5s?autoplay=1&mute=1&controls=0&loop=1&playlist=Src5FJ6bZ5s",
+  headshot:
+    "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/ivp7wbnw_IMG_4723.jpg",
   personality:
-    "Arsenal supporter, Hindi rap aficionado (Krsna, Fotty Seven, Raftaar, Naam Sujal), health-first, deeply family-oriented.",
+    "Arsenal supporter, Hindi rap (Krsna, Fotty Seven, Raftaar, Naam Sujal), health-first, family-oriented.",
 };
 
 export const images = {
-  // Monochrome/neutral imagery curated for AI + Health
   covers: [
+    // DocsApp / Rewards
     "https://images.unsplash.com/photo-1617309084369-a6d5a39537f0?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
-    "https://images.unsplash.com/photo-1611587266737-cc128ffe2946?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+    // Ketto CRO (use provided chart)
+    "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/v3lm221c_Competitive%20analysis.png",
+    // Roles / Scope (device abstract)
     "https://images.unsplash.com/photo-1525459571112-472991c82d74?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+    // Analytics network
     "https://images.unsplash.com/photo-1664854953181-b12e6dda8b7c?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
-    "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg",
+    // Practo (use provided marketing panel)
+    "https://customer-assets.emergentagent.com/job_portfolio-pulse-27/artifacts/ntns0txd_MARKETING%20STRATEGY%20ANALYSIS.png",
   ],
 };
 
 export const projects = [
   {
-    id: "oz-health-ai",
+    id: "docsapp-rewards",
     title: "DocsApp – Earn & Burn Rewards",
-    subtitle: "Driving retention with gamified health incentives",
+    subtitle: "Retention via gamified health incentives",
     category: "Health AI",
     tags: ["Engagement", "Rewards", "Retention"],
     image: images.covers[0],
@@ -45,10 +53,10 @@ export const projects = [
   {
     id: "ketto-cro",
     title: "Ketto – Conversion Optimization",
-    subtitle: "Funnel redesign and experiments for scale",
+    subtitle: "Funnel redesign and experiments at scale",
     category: "CRO",
     tags: ["A/B Testing", "Checkout", "Growth"],
-    image: images.covers[3],
+    image: images.covers[1],
     impact: [
       { label: "CR Uplift", value: "+11%" },
       { label: "Drop-off", value: "-9%" },
@@ -62,7 +70,7 @@ export const projects = [
     subtitle: "Rapid wins via UX + copy + experiments",
     category: "CRO",
     tags: ["Experiments", "Copy", "Checkout"],
-    image: images.covers[1],
+    image: images.covers[3],
     impact: [
       { label: "Time to Impact", value: "<6 weeks" },
       { label: "Key Wins", value: "5+" },
@@ -101,24 +109,40 @@ export const projects = [
 ];
 
 export const timeline = [
-  {
-    year: "2025",
-    role: "AI-first PM",
-    org: "Independent / Advisory",
-    highlights: ["Shipped AI-assisted workflows", "Scaled ops with automation"],
-  },
-  {
-    year: "2023–2024",
-    role: "Senior PM",
-    org: "Ketto / Tura",
-    highlights: ["Checkout CRO", "Experiment velocity"],
-  },
-  {
-    year: "2020–2022",
-    role: "PM",
-    org: "Practo & DocsApp",
-    highlights: ["Onboarding", "Retention via rewards"],
-  },
+  { year: "2025—Now", role: "Founder / Product", org: "Thrive Health India", highlights: ["AI-assisted care ops", "0→1 build"] },
+  { year: "2023—2024", role: "Senior PM", org: "Ketto / Tura", highlights: ["Checkout CRO", "Experiment velocity"] },
+  { year: "2021—2023", role: "PM", org: "MediBuddy (DocsApp)", highlights: ["Rewards & retention", "Scaled engagement"] },
+  { year: "2019—2021", role: "PM", org: "Practo", highlights: ["Onboarding", "Activation"] },
+  { year: "2018—2019", role: "Product/Growth", org: "PharmEasy", highlights: ["Acquisition", "Market playbooks"] },
+];
+
+export const showcase = {
+  b2b: [
+    "B2B SaaS suites across adoption, acquisition, retention & engagement",
+    "Marketing playbooks and growth systems",
+  ],
+  b2c: [
+    "Multiple consumer health apps — 0→1 and into scale",
+    "Safety, compliance, and empathetic UX",
+  ],
+};
+
+export const employers = [
+  { label: "Practo" },
+  { label: "MediBuddy" },
+  { label: "Ketto" },
+  { label: "PharmEasy" },
+  { label: "Thrive Health India" },
+];
+
+export const tools = [
+  { label: "Cursor" },
+  { label: "Vercel" },
+  { label: "OpenAI / ChatGPT" },
+  { label: "Google Gemini" },
+  { label: "Anthropic Claude" },
+  { label: "Runway" },
+  { label: "Linear" },
 ];
 
 export const articles = [

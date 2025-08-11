@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root { --glass: 0.45 } /* base glass opacity */
 
 body {
     margin: 0;
@@ -14,11 +17,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: "IBM Plex Mono", Menlo, Monaco, Consolas, "Courier New",
-        monospace;
-}
-
+code { font-family: "IBM Plex Mono", Menlo, Monaco, Consolas, "Courier New", monospace; }
 
 @layer base {
   :root {
@@ -77,10 +76,7 @@ code {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+  h1,h2,h3,h4,.font-display { font-family: 'Space Grotesk', Inter, system-ui, sans-serif; }
 }

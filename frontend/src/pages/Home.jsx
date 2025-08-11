@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { profile, projects, timeline, articles, downloads } from "../mock";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { profile, projects, timeline, articles, downloads, employers, tools, showcase } from "../mock";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Badge } from "../components/ui/badge";
@@ -7,25 +7,8 @@ import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
 import { useToast } from "../hooks/use-toast";
 import { ArrowUpRight, Download, ExternalLink } from "lucide-react";
-
-function RotatingRing() {
-  return (
-    <svg width="220" height="220" viewBox="0 0 220 220" className="drop-shadow-sm">
-      <defs>
-        <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgba(0,0,0,0.6)" />
-          <stop offset="100%" stopColor="rgba(0,0,0,0.15)" />
-        </linearGradient>
-      </defs>
-      <g style={{ transformOrigin: "110px 110px", animation: "spin 18s linear infinite" }}>
-        <circle cx="110" cy="110" r="90" fill="none" stroke="url(#g)" strokeWidth="1.5" />
-        <circle cx="110" cy="110" r="70" fill="none" stroke="url(#g)" strokeWidth="1.5" />
-        <circle cx="110" cy="110" r="50" fill="none" stroke="url(#g)" strokeWidth="1.5" />
-      </g>
-      <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
-    </svg>
-  );
-}
+import HeroScene from "../components/HeroScene";
+import LogoStrip from "../components/LogoStrip";
 
 function useTilt() {
   const [style, setStyle] = useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)" });
@@ -85,16 +68,29 @@ export default function Home() {
     [tab]
   );
 
+  // subtle parallax for portrait block
+  const portraitRef = useRef(null);
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (portraitRef.current) portraitRef.current.style.transform = `translateY(${Math.min(12, y * 0.04)}px)`;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="py-12" id="top">
       {/* Hero */}
-      <section className="pt-8 md:pt-14">
-        <div className="grid md:grid-cols-[1.3fr_0.7fr] gap-10 items-center">
+      <section className="pt-8 md:pt-14 relative">
+        <HeroScene />
+        <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
           <div>
-            <h1 className="text-4xl md:text-6xl tracking-tight leading-[1.05]">{profile.headline}</h1>
-            <p className="mt-4 text-muted-foreground max-w-[58ch]">
-              {profile.subheadline} I am relentlessly outcome-focused and hands-on — from strategy
-              to execution, with experiments, AI-assisted workflows, and elegant UX.
+            <h1 className="font-display text-5xl md:text-7xl tracking-tight leading-[1.03]">
+              {profile.headline}
+            </h1>
+            <p className="mt-4 text-muted-foreground max-w-[60ch]">
+              {profile.subheadline}
             </p>
             <div className="flex flex-wrap gap-2 mt-5">
               {profile.vibeBadges.map((b) => (
@@ -116,16 +112,66 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="justify-self-center">
-            <RotatingRing />
+          <div className="relative">
+            {/* Portrait */}
+            <div ref={portraitRef} className="rounded-xl overflow-hidden border bg-white/40 backdrop-blur-md border-white/60 shadow-sm">
+              <img src={profile.headshot} alt="Saksham Kalra" className="w-full h-[260px] object-cover" />
+            </div>
+            {/* Feature reel */}
+            <div className="mt-4 rounded-xl overflow-hidden border bg-white/40 backdrop-blur-md border-white/60 shadow-sm">
+              <div className="aspect-video">
+                <iframe
+                  className="w-full h-full"
+                  src={profile.videoUrl}
+                  title="AI PM feature reel"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Employers and Tools */}
+      <LogoStrip title="Worked with" items={employers} />
+      <LogoStrip title="Tools & Platforms" items={tools} />
+
+      {/* What I Build */}
+      <section className="mt-14">
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="bg-white/45 border-white/60 backdrop-blur-md">
+            <CardHeader>
+              <CardTitle className="tracking-tight">B2B SaaS</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground -mt-3">
+              <ul className="list-disc pl-5 space-y-2">
+                {showcase.b2b.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+          <Card className="bg-white/45 border-white/60 backdrop-blur-md">
+            <CardHeader>
+              <CardTitle className="tracking-tight">B2C Health Apps</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground -mt-3">
+              <ul className="list-disc pl-5 space-y-2">
+                {showcase.b2c.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* Work */}
       <section id="work" className="mt-20">
         <div className="flex items-end justify-between">
-          <h2 className="text-2xl md:text-3xl tracking-tight">Selected Work</h2>
+          <h2 className="font-display text-3xl md:text-4xl tracking-tight">Selected Work</h2>
           <a className="text-sm inline-flex items-center gap-1 opacity-80 hover:opacity-100" href="#downloads">
             Full case studies <ExternalLink size={16} />
           </a>
@@ -148,41 +194,9 @@ export default function Home() {
         </Tabs>
       </section>
 
-      {/* Video / Motion placeholder */}
-      <section className="mt-20">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 className="text-xl md:text-2xl tracking-tight">Motion & Systems Thinking</h3>
-            <p className="text-muted-foreground mt-2 max-w-prose">
-              A taste of how I visualize product systems, data flows, and user journeys. I borrow from motion design to make complex things feel simple.
-            </p>
-            <div className="mt-4 flex gap-3">
-              <a href={profile.links.linkedin} target="_blank" rel="noreferrer">
-                <Button variant="secondary">Connect on LinkedIn</Button>
-              </a>
-              <a href="#downloads">
-                <Button>Read Case Studies</Button>
-              </a>
-            </div>
-          </div>
-          <div className="relative rounded-lg overflow-hidden border">
-            <div className="aspect-video bg-muted grid place-items-center text-muted-foreground">
-              <iframe
-                className="w-full h-full"
-                src={profile.videoUrl}
-                title="AI Product & PM"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Writing */}
       <section id="writing" className="mt-20">
-        <h3 className="text-xl md:text-2xl tracking-tight">Writing</h3>
+        <h3 className="font-display text-2xl md:text-3xl tracking-tight">Writing</h3>
         <div className="grid md:grid-cols-2 gap-6 mt-6">
           {articles.map((a) => (
             <a key={a.title} href={a.url} target="_blank" rel="noreferrer" className="block">
@@ -199,23 +213,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About */}
+      {/* About / Career */}
       <section id="about" className="mt-20">
-        <h3 className="text-xl md:text-2xl tracking-tight">About</h3>
+        <h3 className="font-display text-2xl md:text-3xl tracking-tight">Career in Short</h3>
         <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 mt-6">
           <div className="max-w-prose text-muted-foreground">
             <p>
-              I’m a product manager who turns ambiguity into velocity. I thrive at the intersection of AI and health — balancing safety, compliance, patient empathy, and operational scale.
-            </p>
-            <p className="mt-3">
-              Off work: Arsenal on the weekend, Hindi rap on repeat, and long walks with family. Building is better with your tribe.
+              I turn ambiguity into velocity. AI-first in health — shipping responsibly with patient empathy and operational scale. Arsenal on weekends, Hindi rap on repeat, family at the core.
             </p>
           </div>
           <div>
-            <h4 className="font-medium tracking-tight">Career in Short</h4>
-            <div className="mt-3 grid gap-3">
+            <div className="mt-1 grid gap-3">
               {timeline.map((t) => (
-                <div key={t.year} className="border rounded-md p-3">
+                <div key={t.year} className="border rounded-md p-3 bg-white/50 backdrop-blur">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">{t.year}</span>
                     <span className="text-sm">{t.org}</span>
@@ -236,7 +246,7 @@ export default function Home() {
       {/* Downloads / Case Studies */}
       <section id="downloads" className="mt-20">
         <div className="flex items-end justify-between">
-          <h3 className="text-xl md:text-2xl tracking-tight">Case Studies & Decks</h3>
+          <h3 className="font-display text-2xl md:text-3xl tracking-tight">Case Studies & Decks</h3>
           <a href="#top" className="text-sm opacity-80 hover:opacity-100">Back to top</a>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
@@ -257,9 +267,9 @@ export default function Home() {
 
       {/* Final CTA */}
       <section className="mb-24">
-        <div className="rounded-xl border p-6 md:p-8 grid md:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
+        <div className="rounded-xl border p-6 md:p-8 grid md:grid-cols-[1.2fr_0.8fr] gap-6 items-center bg-white/45 backdrop-blur-md border-white/60">
           <div>
-            <h3 className="text-xl md:text-2xl tracking-tight">Let’s ship the next breakthrough</h3>
+            <h3 className="font-display text-2xl md:text-3xl tracking-tight">Let’s ship the next breakthrough</h3>
             <p className="text-muted-foreground mt-2">Zero theater. Real outcomes. AI-first, patient-centered, operator-approved.</p>
           </div>
           <div className="flex md:justify-end gap-3">
