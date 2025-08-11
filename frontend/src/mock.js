@@ -170,7 +170,7 @@ export const downloads = [
       "https://customer-assets.emergentagent.com/job_36d235e4-16cf-4dd4-befa-ddfd3ecca9f6/artifacts/necqfx2u_Onboarding_Case_Study_Practo_Ray.pdf",
   },
   {
-    label: "DocsApp – Earn &amp; Burn (PDF)",
+    label: "DocsApp – Earn & Burn (PDF)",
     href:
       "https://customer-assets.emergentagent.com/job_36d235e4-16cf-4dd4-befa-ddfd3ecca9f6/artifacts/yldwtdje_Earn%20%26%20Burn%28DocsApp%20Cash%20%26%20Rewards%29_.pdf",
   },
