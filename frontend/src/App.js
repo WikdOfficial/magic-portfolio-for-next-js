@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        &lt;Layout&gt;
+        <Layout>
           &lt;Routes&gt;
             &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
           &lt;/Routes&gt;
