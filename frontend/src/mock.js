@@ -150,7 +150,7 @@ export const testimonials = [
 
 export const downloads = [
   {
-    label: "Product Roles &amp; Scope (PDF)",
+    label: "Product Roles & Scope (PDF)",
     href:
       "https://customer-assets.emergentagent.com/job_36d235e4-16cf-4dd4-befa-ddfd3ecca9f6/artifacts/62d6fp5q_SakshamProductBusinessroles.pdf",
   },
