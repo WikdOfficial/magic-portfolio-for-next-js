@@ -20,7 +20,7 @@ export const images = {
   // Monochrome/neutral imagery curated for AI + Health
   covers: [
     "https://images.unsplash.com/photo-1617309084369-a6d5a39537f0?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
-    "https://images.unsplash.com/photo-1611587266737-cc128ffe2946?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixlib=rb-4.1.0&amp;q=85",
+    "https://images.unsplash.com/photo-1611587266737-cc128ffe2946?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
     "https://images.unsplash.com/photo-1525459571112-472991c82d74?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixlib=rb-4.1.0&amp;q=85",
     "https://images.unsplash.com/photo-1664854953181-b12e6dda8b7c?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixlib=rb-4.1.0&amp;q=85",
     "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg",
